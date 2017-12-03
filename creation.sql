@@ -53,7 +53,7 @@ drop sequence provider_seq;
 create table provider(
   id number(10) not null,
   name varchar(50) not null,
-  fk_account varchar(50) not null,
+  fk_account number(10) not null,
   address_street varchar(50),
   address_town varchar(50),
   address_county varchar(50),
@@ -81,13 +81,12 @@ END;
 
 
 /*******************************************************
-  Provider
+  Offer
 *********************************************************/
 
 create table offer(
   title varchar(50) not null,
-  fk_provider_account varchar(50) not null,
-  fk_provider_name varchar(50) not null,
+  fk_provider number(10) not null,
   start_date date not null,
   end_date date not null,
   description varchar(200),
