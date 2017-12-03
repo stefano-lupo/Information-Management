@@ -4,28 +4,94 @@
   Eg Job status one of('in progress' etc)
 */
 
+
+
+
+/*******************************************************
+  Account
+*********************************************************/
 drop table account;
+drop sequence account_seq;
 
 create table account(
+  id number(10) not null,
   email varchar(50) not null,
   password varchar(50) not null,
   first_name varchar(50) not null,
   last_name varchar(50),
   trustworthy_score number(3),
-  primary key (email)
+  primary key (id)
 );
 
+
+/* Create Sequence and trigger for auto incrementing ID */
+CREATE SEQUENCE account_seq START WITH 1;
+
+/* Create trigger to increment the sequence */
+CREATE OR REPLACE TRIGGER account_ai_id 
+BEFORE INSERT ON account 
+FOR EACH ROW
+
+BEGIN
+  SELECT account_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+/
+
+
+
+/*******************************************************
+  Provider
+*********************************************************/
+
+
 drop table provider;
+drop sequence provider_seq;
 
 /* overall_score derived */
 create table provider(
+  id number(10) not null,
   name varchar(50) not null,
   fk_account varchar(50) not null,
   address_street varchar(50),
   address_town varchar(50),
   address_county varchar(50),
   overall_score number(3),
-  primary key (name, fk_account varchar)
+  primary key (id)
+);
+
+
+/* Create Sequence and trigger for auto incrementing ID */
+CREATE SEQUENCE provider_seq START WITH 1;
+
+
+CREATE OR REPLACE TRIGGER provider_ai_id 
+BEFORE INSERT ON provider 
+FOR EACH ROW
+
+BEGIN
+  SELECT provider_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+/
+
+
+
+
+/*******************************************************
+  Provider
+*********************************************************/
+
+create table offer(
+  title varchar(50) not null,
+  fk_provider_account varchar(50) not null,
+  fk_provider_name varchar(50) not null,
+  start_date date not null,
+  end_date date not null,
+  description varchar(200),
+  primary key (title, fk_provider, start_date)
 );
 
 
@@ -38,15 +104,6 @@ create table provider_scores_category(
   primary key (fk_provider, fk_category_name, fk_category_parent)
 );
 
-
-create table offer(
-  title varchar(50) not null,
-  fk_provider varchar(50) not null,
-  start_date date not null,
-  end_date date not null,
-  description varchar(200),
-  primary key (title, fk_provider, start_date)
-);
 
 /* Add status constraint */
 create table job(
