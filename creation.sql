@@ -10,9 +10,6 @@
 /*******************************************************
   Account
 *********************************************************/
-drop table account;
-drop sequence account_seq;
-
 create table account(
   id number(10) not null,
   email varchar(50) not null,
@@ -44,11 +41,6 @@ END;
 /*******************************************************
   Provider
 *********************************************************/
-
-
-drop table provider;
-drop sequence provider_seq;
-
 /* overall_score derived */
 create table provider(
   id number(10) not null,
@@ -83,7 +75,6 @@ END;
 /*******************************************************
   Offer
 *********************************************************/
-
 create table offer(
   title varchar(50) not null,
   fk_provider number(10) not null,
@@ -94,51 +85,93 @@ create table offer(
 );
 
 
-/* Provider score was multivalue and composite */
-create table provider_scores_category(
-  fk_provider varchar(50) not null,
-  fk_category_name varchar(50) not null,
-  fk_category_parent varchar(50) not null,
-  score number(3) not null,
-  primary key (fk_provider, fk_category_name, fk_category_parent)
+/*******************************************************
+  Catrgory
+*********************************************************/
+create table category(
+  id number(10) not null,
+  name varchar(50) not null,
+  parent number(10) not null,
+  primary key (id)
 );
 
 
+/* Create Sequence and trigger for auto incrementing ID */
+CREATE SEQUENCE category_seq START WITH 1;
+
+/* Create trigger to increment the sequence */
+CREATE OR REPLACE TRIGGER category_ai_id 
+BEFORE INSERT ON category 
+FOR EACH ROW
+
+BEGIN
+  SELECT category_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+/
+
+
+/*******************************************************
+  Provider - Catrgory - Score
+*********************************************************/
+/* Provider score was multivalue and composite */
+create table provider_category(
+  fk_provider number(10) not null,
+  fk_category number(10) not null,
+  score number(3) not null,
+  primary key (fk_provider, fk_category)
+);
+
+
+/*******************************************************
+  Job
+*********************************************************/
+
 /* Add status constraint */
 create table job(
-  fk_account varchar(50) not null,
-  fk_provider varchar(50) not null,
+  fk_account number(10) not null,
+  fk_provider number(10) not null,
   start_date date not null,
+  fk_category number(10) not null,
   end_date date not null,
   status varchar(50),
   primary key (fk_account, fk_provider, start_date)
 );
 
 
+
+/*******************************************************
+  Review
+*********************************************************/
+/* Review default value 50% */
 create table review(
-  fk_account varchar(50) not null,
-  fk_provider varchar(50) not null,
-  start_date date not null,
-  title varchar(100) not null,
+  fk_job_account number(10) not null,
+  fk_job_provider number(10) not null,
+  fk_job_start_date date not null,
   description varchar(200),
   rating number(3),
-  primary key (fk_account, fk_provider, start_date)
+  helpfullness_rating number(3),
+  primary key (fk_job_account, fk_job_provider, fk_job_start_date)
 );
 
 
+
+/*******************************************************
+  Portfolio Entry
+*********************************************************/
 create table portfolio_entry(
-  fk_account varchar(50) not null,
-  fk_provider varchar(50) not null,
-  start_date date not null,
+  fk_job_account number(10) not null,
+  fk_job_provider number(10) not null,
+  fk_job_start_date date not null,
   title varchar(100) not null,
   description varchar(200),
-  primary key (fk_account, fk_provider, start_date)
+  primary key (fk_job_account, fk_job_provider, fk_job_start_date)
 );
 
 
-create table category(
-  name varchar(50) not null,
-  parent varchar(50) not null,
-  primary key (name, parent)
-);
+
+
+
+
 

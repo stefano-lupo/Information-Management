@@ -3,6 +3,7 @@
 2. Add in constraints based on data
 3. Check how to do cardinality stuff
     - Eg inserting 2nd provider with safe account_id fk works (and it should) but others shouldnt
+4. Providers must make element in category_provider_table
 
 ## Semantic constraints
 - Dates in offer - end date must be after start date
