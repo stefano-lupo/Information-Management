@@ -91,7 +91,7 @@ create table offer(
 create table category(
   id number(10) not null,
   name varchar(50) not null,
-  parent number(10) not null,
+  parent number(10),
   primary key (id)
 );
 

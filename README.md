@@ -4,6 +4,9 @@
 3. Check how to do cardinality stuff
     - Eg inserting 2nd provider with safe account_id fk works (and it should) but others shouldnt
 4. Providers must make element in category_provider_table
+5. Default values for fields (Reviews / scores / helpfullness etc)
+6: Dont allow providers be in categories with parent = null as they are root categories (maybe)
+  - Only allow it if no other elements in the categories table has that as parent (1 level category)
 
 ## Semantic constraints
 - Dates in offer - end date must be after start date

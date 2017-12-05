@@ -59,3 +59,11 @@ ALTER TABLE portfolio_entry
 ADD CONSTRAINT fk_portfolio_entry_job
   FOREIGN KEY (fk_job_account, fk_job_provider, fk_job_start_date)
   REFERENCES job(fk_account, fk_provider, start_date);
+
+
+
+
+
+
+
+
