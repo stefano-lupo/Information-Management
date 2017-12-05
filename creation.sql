@@ -117,7 +117,7 @@ END;
 
 
 /*******************************************************
-  Provider - Catrgory
+  Provider - Category
 *********************************************************/
 /* Provider score was multivalue and composite */
 create table provider_category(

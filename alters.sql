@@ -1,100 +1,113 @@
 /* Make account's candidate key unique */
-ALTER Table account
-ADD CONSTRAINT account_candidate_unique UNIQUE (email);
+alter Table account
+add constraint account_candidate_unique UNIQUE (email);
+
+/* Give account trustworthy_score a default value of 50% */
+alter table account modify(trustworthy_score default 50) add constraint account_tw_score_range check (trustworthy_score between 0 and 100);
 
 
 
 /* Make provider's candidate (and composite) key unique */
-ALTER Table provider
-ADD CONSTRAINT provider_candidate_unique UNIQUE (name, fk_account);
+alter Table provider
+add constraint provider_candidate_unique UNIQUE (name, fk_account);
 
 /* Add fk_account to provider */
-ALTER TABLE provider
-ADD CONSTRAINT fk_provider_account
-  FOREIGN KEY (fk_account)
-  REFERENCES account(id);
+alter table provider
+add constraint fk_provider_account
+  foreign key (fk_account)
+  references account(id);
+
+/* Give provider overall_score a default value of 50% */
+alter table provider modify(overall_score default 50) add constraint provider_overall_score_range check (overall_score between 0 and 100);
 
 
 
 /* Make category's candidate (and composite) key unique */
-ALTER Table category
-ADD CONSTRAINT category_candidate_unique UNIQUE (name, parent);
+alter Table category
+add constraint category_candidate_unique UNIQUE (name, parent);
 
 /* Add recursive foreign key parent to category */
-ALTER TABLE category
-ADD CONSTRAINT fk_category_category
-  FOREIGN KEY (parent)
-  REFERENCES category(id);
+alter table category
+add constraint fk_category_category
+  foreign key (parent)
+  references category(id);
 
 
 
 /* Add fk_provider to offers */
-ALTER TABLE offer
-ADD CONSTRAINT fk_offer_provider
-  FOREIGN KEY (fk_provider)
-  REFERENCES provider(id);
+alter table offer
+add constraint fk_offer_provider
+  foreign key (fk_provider)
+  references provider(id);
 
 /* Add fk_category to offer */
-ALTER TABLE offer
-ADD CONSTRAINT fk_offer_category
-  FOREIGN KEY (fk_category)
-  REFERENCES category(id);
+alter table offer
+add constraint fk_offer_category
+  foreign key (fk_category)
+  references category(id);
 
 
 
 
 /* Add fk_provider to provider_category */
-ALTER TABLE provider_category
-ADD CONSTRAINT fk_provider_category_provider
-  FOREIGN KEY (fk_provider)
-  REFERENCES provider(id);
+alter table provider_category
+add constraint fk_provider_category_provider
+  foreign key (fk_provider)
+  references provider(id);
 
 /* Add fk_category_name, fk_category_parent to provider_category */
-ALTER TABLE provider_category
-ADD CONSTRAINT fk_provider_category_category
-  FOREIGN KEY (fk_category)
-  REFERENCES category(id);
+alter table provider_category
+add constraint fk_provider_category_category
+  foreign key (fk_category)
+  references category(id);
 
-
+/* Give provider_category a default score of 50% */
+alter table provider_category 
+modify(score default 50) 
+add constraint provider_category_score_range check (score between 0 and 100);
 
 
 
 /* Make job's candidate (and composite) key unique */
-ALTER Table job
-ADD CONSTRAINT job_candidate_unique UNIQUE (fk_account, fk_provider, fk_category, start_date);
+alter Table job
+add constraint job_candidate_unique UNIQUE (fk_account, fk_provider, fk_category, start_date);
 
 /* Add fk_account to job */
-ALTER TABLE job
-ADD CONSTRAINT fk_job_account
-  FOREIGN KEY (fk_account)
-  REFERENCES account(id);
+alter table job
+add constraint fk_job_account
+  foreign key (fk_account)
+  references account(id);
 
 /* Add fk_provider to job */
-ALTER TABLE job
-ADD CONSTRAINT fk_job_provider
-  FOREIGN KEY (fk_provider)
-  REFERENCES provider(id);
+alter table job
+add constraint fk_job_provider
+  foreign key (fk_provider)
+  references provider(id);
 
 /* Add fk_category to job */
-ALTER TABLE job
-ADD CONSTRAINT fk_job_category
-  FOREIGN KEY (fk_category)
-  REFERENCES category(id);
+alter table job
+add constraint fk_job_category
+  foreign key (fk_category)
+  references category(id);
+
+
+alter table job 
+add constraint job_status_allowed_values check (status IN ('negotiation', 'in-progress', 'finished', 'paid'));
 
 
 
 
 /* Add fk_job to review */
-ALTER TABLE review
-ADD CONSTRAINT fk_review_job
-  FOREIGN KEY (fk_job)
-  REFERENCES job(id);
+alter table review
+add constraint fk_review_job
+  foreign key (fk_job)
+  references job(id);
 
 /* Add fk_job to portfolio_entry */
-ALTER TABLE portfolio_entry
-ADD CONSTRAINT fk_portfolio_entry_job
-  FOREIGN KEY (fk_job)
-  REFERENCES job(id);
+alter table portfolio_entry
+add constraint fk_portfolio_entry_job
+  foreign key (fk_job)
+  references job(id);
 
 
 

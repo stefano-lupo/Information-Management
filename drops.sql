@@ -10,6 +10,7 @@ delete from account;
 drop sequence provider_seq;
 drop sequence account_seq;
 drop sequence category_seq;
+drop sequence job_seq;
 
 drop table review;
 drop table portfolio_entry;

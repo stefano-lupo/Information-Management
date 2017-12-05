@@ -96,7 +96,7 @@ insert into account values (
   '1234',
   'Joe',
   'Blogs',
-  99
+  default
 );
 
 /* Joes Sparks */
@@ -107,14 +107,14 @@ insert into provider values (
   '123 Johns Sparks Street',
   'Sutton',
   'Dublin',
-  99
+  default
 );
 
 /* Make him an electrician */
 insert into provider_category values (
   1,
   4,
-  99
+  default
 );
 
 /* Give him two offers */
@@ -148,7 +148,7 @@ insert into account values (
   '1234',
   'Frank',
   'Smith',
-  100
+  default
 );
 
 /* Frank's Carpentry */
@@ -159,14 +159,14 @@ insert into provider values (
   '123 Carpet Street',
   'Frankland',
   'Frankfurt',
-  50
+  default
 );
 
 /* Make him a carpenter */
 insert into provider_category values (
   2,
   3,
-  75
+  default
 );
 
 insert into offer values (
@@ -190,7 +190,7 @@ insert into account values (
   '1234',
   'Cathal',
   'Kelly',
-  100
+  default
 );
 
 /* Create Cathal's Construction */
@@ -201,14 +201,14 @@ insert into provider values (
   '1 Brick Street',
   'Buildertown',
   'Dublin',
-  12
+  default
 );
 
 /* Make him a construction provider */
 insert into provider_category values (
   3,
   6,
-  50
+  default
 );
 
 insert into offer values (
@@ -230,7 +230,8 @@ insert into account values (
   '1234',
   'John',
   'Doe',
-  100);
+  default
+);
 
 /* Johns Music Lessons */
 insert into provider values (
@@ -240,21 +241,21 @@ insert into provider values (
   '123 Fake Street',
   'Musicland',
   'Dublin',
-  22
+  default
 );
 
 /* Make him teach guitar lessons */
 insert into provider_category values (
   4,
   10,
-  85
+  default
 );
 
 /* Make him teach piano lessons */
 insert into provider_category values (
   4,
   11,
-  85
+  default
 );
 
 
@@ -280,14 +281,14 @@ insert into provider values (
   '123 Johns Plumbing Address',
   'Sutton',
   'Dublin',
-  99
+  default
 );
 
 /* Add him as a plumber */
 insert into provider_category values (
   5,
   5,
-  99
+  default
 );
 
 
@@ -302,7 +303,8 @@ insert into account values (
   '1234',
   'Pat',
   'Peters',
-  99);
+  default
+);
 
 /* Create Professor Pete */
 insert into provider values (
@@ -312,14 +314,14 @@ insert into provider values (
   '123 Teacher Street',
   'Gradesland',
   'Cork',
-  22
+  default
 );
 
 /* Make him an english teacher */
 insert into provider_category values (
   6,
   12,
-  85
+  default
 );
 
 
@@ -327,7 +329,7 @@ insert into provider_category values (
 insert into provider_category values (
   6,
   13,
-  85
+  default
 );
 
 /* Give him an english grinds offer */
@@ -362,7 +364,7 @@ insert into account values (
   'i_love_chocolate___bear',
   'John',
   'Dorian',
-  100
+  default
 );
 
 
@@ -371,11 +373,11 @@ insert into account values (
 *********************************************************/
 insert into account values (
   7,
-  'teddyB@sacredheart.com',
+  'tedd2yB@sacredheart.com',
   'Aligator7',
   'Theodore',
   'Buckland',
-  100
+  default
 );
 
 
@@ -388,7 +390,7 @@ insert into account values (
   'penny',
   'Jan',
   'Itor',
-  100
+  default
 );
 
 /******************************************************
@@ -400,7 +402,7 @@ insert into account values (
   '1234',
   'Bob',
   'Kelso',
-  2
+  default
 );
 
 /******************************************************
@@ -412,7 +414,7 @@ insert into account values (
   '1234',
   'Chris',
   'Turk',
-  2
+  default
 );
 
 
@@ -432,7 +434,7 @@ insert into job values (
   12,                                   /* Category */
   TO_DATE('23-09-2017', 'DD-MM-YYYY'),  /* Start Date */
   TO_DATE('26-09-2017', 'DD-MM-YYYY'),  /* End Date */
-  'finished'                            /* Finished */
+  'paid'                                /* Status */
 );
 
 /* JD got maths grinds from Professor Pete */
@@ -443,7 +445,7 @@ insert into job values (
   13,                                   /* Category */
   TO_DATE('23-09-2017', 'DD-MM-YYYY'),  /* Start Date */
   TO_DATE('26-09-2017', 'DD-MM-YYYY'),  /* End Date */
-  'finished'                            /* Finished */
+  'paid'                                /* Status */
 );
 
 /* Ted got piano lessons from John's Music Lessons */
@@ -454,7 +456,7 @@ insert into job values (
   10,                                   /* Category */
   TO_DATE('30-09-2017', 'DD-MM-YYYY'),  /* Start Date */
   TO_DATE('4-10-2017', 'DD-MM-YYYY'),   /* End Date */
-  'finished'                            /* Finished */
+  'paid'                                /* Status */
 );
 
 /* Jan Itor is getting construction work done from Cathals Construction */
@@ -465,7 +467,7 @@ insert into job values (
   6,                                    /* Category */
   TO_DATE('4-12-2017', 'DD-MM-YYYY'),   /* Start Date */
   null,                                 /* End Date */
-  'in-progress'                         /* Finished */
+  'in-progress'                         /* Status */
 );
 
 /* Jan Itor is getting plumbing work done from Joes Plumbing */
@@ -476,7 +478,7 @@ insert into job values (
   5,                                    /* Category */
   TO_DATE('4-12-2017', 'DD-MM-YYYY'),   /* Start Date */
   null,                                 /* End Date */
-  'in-progress'                         /* Finished */
+  'finished'                            /* Status */
 );
 
 
@@ -488,7 +490,7 @@ insert into job values (
   3,                                    /* Category */
   TO_DATE('10-11-2017', 'DD-MM-YYYY'),  /* Start Date */
   TO_DATE('14-11-2017', 'DD-MM-YYYY'),  /* Start Date */
-  'finished'                            /* Finished */
+  'paid'                                /* Status */
 );
 
 
@@ -500,7 +502,7 @@ insert into job values (
   11,                                   /* Category */
   TO_DATE('10-11-2017', 'DD-MM-YYYY'),  /* Start Date */
   TO_DATE('14-11-2017', 'DD-MM-YYYY'),  /* Start Date */
-  'finished'                            /* Finished */
+  'paid'                            /* Status */
 );
 
 
@@ -509,12 +511,101 @@ insert into job values (
 /******************************************************
   Create Reviews (by customers on finished jobs)
 *********************************************************/
+
+
 /* JD got english grinds from Professor Pete */
-insert into job values (
-  6,                                    /* Account */
-  6,                                    /* Provider */
-  TO_DATE('23-09-2017', 'DD-MM-YYYY'),  /* Start Date */
-  12,                                   /* Category */
-  TO_DATE('26-09-2017', 'DD-MM-YYYY'),  /* End Date */
-  'finished'                            /* Finished */
+insert into review values (
+  1,                                      /* Job */
+  'He doth be the best english teacher',  /* Description */
+  85,                                     /* Rating */
+  50                                      /* Helpfulness */
 );
+
+
+/* JD got maths grinds from Professor Pete */
+insert into review values(
+  2,                                      /* Job */
+  'He doth be the best math teacher',     /* Description */
+  95,                                     /* Rating */
+  50                                      /* Helpfulness */
+);
+
+/* Ted got piano lessons from John's Music Lessons */
+insert into review values(
+  3,                                      /* Job */
+  'Great piano teacher',                  /* Description */
+  89,                                     /* Rating */
+  50                                      /* Helpfulness */
+);
+
+/* Bob gotcarpentry work from Franks Carpentry */
+insert into review values(
+  6,                                      /* Job */
+  'Pathetic carpenter',                   /* Description */
+  22,                                     /* Rating */
+  50                                      /* Helpfulness */
+);
+
+/* Turk got guitar lessons from John's Music Lessons */
+insert into review values(
+  7,                                      /* Job */
+  'Crap guitar teacher',                  /* Description */
+  33,                                     /* Rating */
+  50                                      /* Helpfulness */
+);
+
+
+
+
+
+/***************************************************************
+  Create Portfolio Entries (by providers based on finished jobs)
+****************************************************************/
+
+/* Professor Pete's English grinds with John */
+insert into portfolio_entry values(
+  1,                                     /* Job */
+  'LC English Poetry',                   /* Title */
+  'Taught some kid how to read Heaney'   /* Description */
+);
+
+/* Professor Pete's Maths grinds with John */
+insert into portfolio_entry values(
+  2,                                     /* Job */
+  'LC Maths Trigonometry',               /* Title */
+  'Taught some kid SOHCAHTOA'           /* Description */
+);
+
+/* Johns Music Lesson's piano lessons with Ted */
+insert into portfolio_entry values(
+  3,                                      /* Job */
+  'Piano Lessons with Beginner',          /* Title */
+  'Taught some kid to play 3 Blind Mice'  /* Description */
+);
+
+/* Franks Carpentry's capreneting (?) for Bob */
+insert into portfolio_entry values(
+  6,                                      /* Job */
+  'Built a Computer Desk',                /* Title */
+  'It looked nice but it fell down alot'  /* Description */
+);
+
+/* Johns Music Lesson's guitar lessons with Chris */
+insert into portfolio_entry values(
+  7,                                      /* Job */
+  'Expert Level Guitar Lessons',          /* Title */
+  'My best student. Thought him Wonderwall and Sweet Child of Mine'   /* Description */
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
