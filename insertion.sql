@@ -5,7 +5,7 @@
 insert into category values (
   1,
   'Home Renovation',
-  Null
+  null
 );
 
 insert into category values (
@@ -41,7 +41,7 @@ insert into category values (
 insert into category values (
   7,
   'Education',
-  5
+  null
 );
 
 insert into category values (
@@ -275,7 +275,7 @@ insert into offer values (
 *********************************************************/
 insert into provider values (
   5,
-  'Stefano''s Mobile Apps',
+  'John''s Plumbing',
   1,
   '123 Johns Plumbing Address',
   'Sutton',
@@ -407,7 +407,7 @@ insert into account values (
   Create a customer Chris Turk
 *********************************************************/
 insert into account values (
-  9,
+  10,
   'turk@sacredheart.com',
   '1234',
   'Chris',
@@ -426,50 +426,55 @@ insert into account values (
 
 /* JD got english grinds from Professor Pete */
 insert into job values (
+  1,                                    /* id */
   6,                                    /* Account */
   6,                                    /* Provider */
-  TO_DATE('23-09-2017', 'DD-MM-YYYY'),  /* Start Date */
   12,                                   /* Category */
+  TO_DATE('23-09-2017', 'DD-MM-YYYY'),  /* Start Date */
   TO_DATE('26-09-2017', 'DD-MM-YYYY'),  /* End Date */
   'finished'                            /* Finished */
 );
 
 /* JD got maths grinds from Professor Pete */
 insert into job values (
+  2,                                    /* id */
   6,                                    /* Account */
   6,                                    /* Provider */
-  TO_DATE('23-09-2017', 'DD-MM-YYYY'),  /* Start Date */
   13,                                   /* Category */
+  TO_DATE('23-09-2017', 'DD-MM-YYYY'),  /* Start Date */
   TO_DATE('26-09-2017', 'DD-MM-YYYY'),  /* End Date */
   'finished'                            /* Finished */
 );
 
 /* Ted got piano lessons from John's Music Lessons */
 insert into job values (
+  3,                                    /* id */
   7,                                    /* Account */
   4,                                    /* Provider */
-  TO_DATE('30-09-2017', 'DD-MM-YYYY'),  /* Start Date */
   10,                                   /* Category */
+  TO_DATE('30-09-2017', 'DD-MM-YYYY'),  /* Start Date */
   TO_DATE('4-10-2017', 'DD-MM-YYYY'),   /* End Date */
   'finished'                            /* Finished */
 );
 
 /* Jan Itor is getting construction work done from Cathals Construction */
 insert into job values (
+  4,                                    /* id */
   8,                                    /* Account */
   3,                                    /* Provider */
-  TO_DATE('4-12-2017', 'DD-MM-YYYY'),   /* Start Date */
   6,                                    /* Category */
+  TO_DATE('4-12-2017', 'DD-MM-YYYY'),   /* Start Date */
   null,                                 /* End Date */
   'in-progress'                         /* Finished */
 );
 
 /* Jan Itor is getting plumbing work done from Joes Plumbing */
 insert into job values (
-  6,                                    /* Account */
+  5,                                    /* id */
+  8,                                    /* Account */
   5,                                    /* Provider */
-  TO_DATE('4-12-2017', 'DD-MM-YYYY'),   /* Start Date */
   5,                                    /* Category */
+  TO_DATE('4-12-2017', 'DD-MM-YYYY'),   /* Start Date */
   null,                                 /* End Date */
   'in-progress'                         /* Finished */
 );
@@ -477,10 +482,11 @@ insert into job values (
 
 /* Bob Kelso got some carpentry done by Franks Carpentry */
 insert into job values (
-  6,                                    /* Account */
+  6,                                    /* id */
+  9,                                    /* Account */
   2,                                    /* Provider */
-  TO_DATE('10-11-2017', 'DD-MM-YYYY'),  /* Start Date */
   3,                                    /* Category */
+  TO_DATE('10-11-2017', 'DD-MM-YYYY'),  /* Start Date */
   TO_DATE('14-11-2017', 'DD-MM-YYYY'),  /* Start Date */
   'finished'                            /* Finished */
 );
@@ -488,10 +494,27 @@ insert into job values (
 
 /* Chris Turk got some guitar lessons from John's Music Lessons */
 insert into job values (
-  6,                                    /* Account */
+  7,                                    /* id */
+  10,                                   /* Account */
   4,                                    /* Provider */
+  11,                                   /* Category */
   TO_DATE('10-11-2017', 'DD-MM-YYYY'),  /* Start Date */
-  11,                                    /* Category */
   TO_DATE('14-11-2017', 'DD-MM-YYYY'),  /* Start Date */
+  'finished'                            /* Finished */
+);
+
+
+
+
+/******************************************************
+  Create Reviews (by customers on finished jobs)
+*********************************************************/
+/* JD got english grinds from Professor Pete */
+insert into job values (
+  6,                                    /* Account */
+  6,                                    /* Provider */
+  TO_DATE('23-09-2017', 'DD-MM-YYYY'),  /* Start Date */
+  12,                                   /* Category */
+  TO_DATE('26-09-2017', 'DD-MM-YYYY'),  /* End Date */
   'finished'                            /* Finished */
 );

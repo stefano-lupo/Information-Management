@@ -134,14 +134,31 @@ create table provider_category(
 
 /* Add status constraint */
 create table job(
+  id number(10) not null,
   fk_account number(10) not null,
   fk_provider number(10) not null,
-  start_date date not null,
   fk_category number(10) not null,
+  start_date date not null,
   end_date date,
   status varchar(50),
-  primary key (fk_account, fk_provider, start_date)
+  primary key (id)
 );
+
+
+/* Create Sequence for auto incrementing ID */
+CREATE SEQUENCE job_seq START WITH 1;
+
+/* Create trigger to increment the sequence */
+CREATE OR REPLACE TRIGGER job_ai_id 
+BEFORE INSERT ON job 
+FOR EACH ROW
+
+BEGIN
+  SELECT job_seq.NEXTVAL
+  INTO   :new.id
+  FROM   dual;
+END;
+/
 
 
 
@@ -150,13 +167,11 @@ create table job(
 *********************************************************/
 /* Review default value 50% */
 create table review(
-  fk_job_account number(10) not null,
-  fk_job_provider number(10) not null,
-  fk_job_start_date date not null,
+  fk_job number(10) not null,
   description varchar(200),
   rating number(3),
   helpfullness_rating number(3),
-  primary key (fk_job_account, fk_job_provider, fk_job_start_date)
+  primary key (fk_job)
 );
 
 
@@ -165,12 +180,10 @@ create table review(
   Portfolio Entry
 *********************************************************/
 create table portfolio_entry(
-  fk_job_account number(10) not null,
-  fk_job_provider number(10) not null,
-  fk_job_start_date date not null,
+  fk_job number(10) not null,
   title varchar(100) not null,
   description varchar(200),
-  primary key (fk_job_account, fk_job_provider, fk_job_start_date)
+  primary key (fk_job)
 );
 
 

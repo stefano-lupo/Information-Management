@@ -5,7 +5,11 @@ inner join account on provider.fk_account=account.id
 where offer.fk_category = (SELECT id from category where name='Maths Grinds');
 
 
-
+/* List all of the jobs in some category */
+select account.first_name as "Customer Name", provider.name as "Provider Name", category.name as "Category", job.start_date, job.end_date from job 
+inner join account on account.id=job.fk_account
+inner join provider on provider.id=job.fk_provider
+inner join category on category.id=job.fk_category;
 
 
 /** INNER join providers and accounts -> only returns rows for entries who are BOTH PROVIDERS AND ACCOUNTS **/
@@ -17,4 +21,5 @@ SELECT account.first_name, provider.name, provider.overall_score  FROM account
 left join provider on account.id=provider.fk_account;
 
 
-SELECT a.name AS "Category Name", b.name AS "Parent Name" FROM category a, category b WHERE a.parent = b.id;
+
+SELECT a.name AS "Category Name", b.name AS "Parent Name" FROM category a, category b WHERE (a.parent = b.id);

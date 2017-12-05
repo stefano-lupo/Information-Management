@@ -23,6 +23,8 @@ Note: John doe: 1 account, 1 provider, 2 categories (John's Music Lessons in bot
 
 ## Assignment Notes
 1. Offer table needs category as providers can work in multiple categories therefore need to keep track of which category this offer is for.
+2. Once any relation that had a composite PK became a foreign key in another table, give it its own ID and composite key became candidate key (unique)
+3. Offer / rEview table split
 
 
 
