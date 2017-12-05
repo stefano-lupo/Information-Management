@@ -12,6 +12,11 @@ ADD CONSTRAINT fk_offfer_provider
   FOREIGN KEY (fk_provider)
   REFERENCES provider(id);
 
+/* Add fk_category to category */
+ALTER TABLE offer
+ADD CONSTRAINT fk_offfer_category
+  FOREIGN KEY (fk_category)
+  REFERENCES category(id);
 
 
 /* Add fk_provider to provider_category */

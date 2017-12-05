@@ -6,6 +6,9 @@
 
 
 
+/* Fix line size so its readable */
+SET LINESIZE 32000
+
 
 /*******************************************************
   Account
@@ -73,13 +76,14 @@ END;
 
 
 /*******************************************************
-  Offer
+  Offer - allows null end dates for permanent offers
 *********************************************************/
 create table offer(
   title varchar(50) not null,
   fk_provider number(10) not null,
   start_date date not null,
-  end_date date not null,
+  fk_category number(10) not null,
+  end_date date,
   description varchar(200),
   primary key (title, fk_provider, start_date)
 );
@@ -113,7 +117,7 @@ END;
 
 
 /*******************************************************
-  Provider - Catrgory - Score
+  Provider - Catrgory
 *********************************************************/
 /* Provider score was multivalue and composite */
 create table provider_category(
@@ -134,7 +138,7 @@ create table job(
   fk_provider number(10) not null,
   start_date date not null,
   fk_category number(10) not null,
-  end_date date not null,
+  end_date date,
   status varchar(50),
   primary key (fk_account, fk_provider, start_date)
 );
