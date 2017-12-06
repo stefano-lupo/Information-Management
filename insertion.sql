@@ -431,7 +431,7 @@ insert into job values (
   1,                                    /* id */
   6,                                    /* Account */
   6,                                    /* Provider */
-  12,                                   /* Category */
+  12,                                   /* Category */ 
   TO_DATE('23-09-2017', 'DD-MM-YYYY'),  /* Start Date */
   TO_DATE('26-09-2017', 'DD-MM-YYYY'),  /* End Date */
   'paid'                                /* Status */

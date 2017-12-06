@@ -4,7 +4,7 @@
 3. Check how to do cardinality stuff
     - Eg inserting 2nd provider with safe account_id fk works (and it should) but others shouldnt
 4. Providers must make element in category_provider_table
-5. Default values for fields (Reviews / scores / helpfullness etc)
+5. ~~Default values for fields (Reviews / scores / helpfullness etc)~~
 6. Dont allow providers be in categories with parent = null as they are root categories (maybe)
   - Only allow it if no other elements in the categories table has that as parent (1 level category)
 7. Only allow providers create offers in categories they are actually in.
@@ -25,6 +25,7 @@ Note: John doe: 1 account, 1 provider, 2 categories (John's Music Lessons in bot
 1. Offer table needs category as providers can work in multiple categories therefore need to keep track of which category this offer is for.
 2. Once any relation that had a composite PK became a foreign key in another table, give it its own ID and composite key became candidate key (unique)
 3. Offer / rEview table split
+4. Trigger / function for ensuring job creation is valid
 
 
 

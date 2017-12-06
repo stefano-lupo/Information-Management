@@ -90,9 +90,26 @@ add constraint fk_job_category
   foreign key (fk_category)
   references category(id);
 
-
+/* Add allowed values for status field */
 alter table job 
 add constraint job_status_allowed_values check (status IN ('negotiation', 'in-progress', 'finished', 'paid'));
+
+
+
+/* Ensure this job refers to a category the provider actually works in */ 
+/* This trigger makes a call to above user defined function */
+create or replace trigger is_job_provider_in_category
+before insert or update on job
+for each row
+declare 
+  is_in_category number(1);
+begin
+  is_in_category := is_provider_in_category(:new.fk_provider, :new.fk_category);
+  if is_in_category = 0 then
+    raise_application_error(-20000, 'Cannot create job as provider ' || :new.fk_provider || ' is not in category ' || :new.fk_category); 
+  end if;
+end;
+/
 
 
 

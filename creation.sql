@@ -9,6 +9,9 @@
 /* Fix line size so its readable */
 SET LINESIZE 32000
 
+/* Setup access to dbms_output.put_line() */
+set serveroutput on size 30000;
+
 
 /*******************************************************
   Account
@@ -131,8 +134,6 @@ create table provider_category(
 /*******************************************************
   Job
 *********************************************************/
-
-/* Add status constraint */
 create table job(
   id number(10) not null,
   fk_account number(10) not null,
