@@ -101,7 +101,7 @@ end;
 
 /* Ensure account doesnt already have a provider in this category */
 create or replace trigger account_in_category
-before insert or update on provider_category
+before insert on provider_category
 for each row
 declare 
   is_already_in_category number(1);
@@ -112,6 +112,7 @@ begin
   end if;
 end;
 /
+
 
 
 
@@ -174,6 +175,20 @@ add constraint fk_review_job
 
 /* Ensure rating is valid vlaue */
 alter table review modify(helpfullness_rating default 0) add constraint review_rating_range check (rating between 0 and 100);
+
+/* Update provider's score in given category on new review */ 
+/* This does not work due to mutability issues but the function does */
+/*
+create or replace trigger update_score_review
+after insert or update on review
+for each row
+declare 
+  deleteme number(1);
+begin
+   deleteme := update_provider_cat_score(:new.fk_job);
+end;
+/
+*/
 
 
 /* Add fk_job to portfolio_entry */

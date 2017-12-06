@@ -25,7 +25,7 @@ Note: John doe: 1 account, 1 provider, 2 categories (John's Music Lessons in bot
 2. Once any relation that had a composite PK became a foreign key in another table, give it its own ID and composite key became candidate key (unique)
 3. Offer / rEview table split
 4. Trigger / function for ensuring job creation is valid
-
+5. Trigger for derived fields
 
 
 ## Inner Join

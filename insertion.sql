@@ -504,6 +504,17 @@ insert into job values (
   'paid'                            /* Status */
 );
 
+/* Chris Turk also got some piano lessons from John's Music Lessons */
+insert into job values (
+  8,                                    /* id */
+  10,                                   /* Account */
+  4,                                    /* Provider */
+  10,                                   /* Category */
+  TO_DATE('10-11-2017', 'DD-MM-YYYY'),  /* Start Date */
+  TO_DATE('14-11-2017', 'DD-MM-YYYY'),  /* Start Date */
+  'paid'                            /* Status */
+);
+
 
 
 
@@ -525,7 +536,7 @@ insert into review values (
 insert into review values(
   2,                                      /* Job */
   'He doth be the best math teacher',     /* Description */
-  95,                                     /* Rating */
+  80,                                     /* Rating */
   50                                      /* Helpfulness */
 );
 
@@ -550,6 +561,14 @@ insert into review values(
   7,                                      /* Job */
   'Crap guitar teacher',                  /* Description */
   33,                                     /* Rating */
+  50                                      /* Helpfulness */
+);
+
+/* Turks review for piano lessons from John's Music Lessons */
+insert into review values(
+  8,                                      /* Job */
+  'Crap piano teacher',                  /* Description */
+  10,                                     /* Rating */
   50                                      /* Helpfulness */
 );
 
