@@ -99,6 +99,19 @@ begin
 end;
 /
 
+/* Ensure account doesnt already have a provider in this category */
+create or replace trigger account_in_category
+before insert or update on provider_category
+for each row
+declare 
+  is_already_in_category number(1);
+begin
+  is_already_in_category := account_provider_in_category(:new.fk_category, :new.fk_provider);
+  if is_already_in_category > 0 then
+    raise_application_error(-20000, 'Account may only have one provider in a category - '); 
+  end if;
+end;
+/
 
 
 

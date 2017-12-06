@@ -31,6 +31,25 @@ begin
 end;
 /
 
+/* Checks if an account (based on the provider_id) already has a provider in a certain category */
+create or replace function account_provider_in_category(category_id in number, provider_id in number) 
+    return number 
+    is 
+      has_provider_in_category number(1);
+      account_id number(10);
+begin
+  dbms_output.put_line('category_id: ' || category_id);
+  dbms_output.put_line('provider_id: ' || provider_id);
+
+  select provider.fk_account into account_id from provider where provider.id=provider_id;
+  dbms_output.put_line('account_id: ' || account_id);
+
+  select count(*) into has_provider_in_category from provider_category where provider_category.fk_provider in 
+    (select id from provider where provider.fk_account = account_id) 
+    and provider_category.fk_category = category_id;
+  return has_provider_in_category;
+end;
+/
 
 
 

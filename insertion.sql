@@ -292,7 +292,6 @@ insert into provider_category values (
 );
 
 
-
 /******************************************************
   Create Pat Peters
   Note: account 5 but provider 6
