@@ -121,7 +121,7 @@ insert into provider_category values (
 insert into offer values (
   '10% off for your next electrician thing!',
   1,
-  TO_DATE('15-08-2017', 'DD-MM-YYYY'),
+  TO_DATE('20-12-2017', 'DD-MM-YYYY'),
   4,
   TO_DATE('25-12-2017', 'DD-MM-YYYY'),
   'This offer is only available until christmas!'
@@ -131,7 +131,7 @@ insert into offer values (
   '20% Off Safety Check',
   1,
   TO_DATE('15-08-2017', 'DD-MM-YYYY'),
-  2,
+  4,
   TO_DATE('25-12-2017', 'DD-MM-YYYY'),
   'Get your home tested now.'
 );

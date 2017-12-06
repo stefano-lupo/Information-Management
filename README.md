@@ -3,14 +3,14 @@
 2. Add in constraints based on data
 3. Check how to do cardinality stuff
     - Eg inserting 2nd provider with safe account_id fk works (and it should) but others shouldnt
-4. Providers must make element in category_provider_table
+4. ~~Providers must make element in category_provider_table~~
 5. ~~Default values for fields (Reviews / scores / helpfullness etc)~~
 6. Dont allow providers be in categories with parent = null as they are root categories (maybe)
   - Only allow it if no other elements in the categories table has that as parent (1 level category)
-7. Only allow providers create offers in categories they are actually in.
-    - Only allow providers work in their categories etc.
-8. Only allow portfolio entries for accounts who actually took part in that job, same for reviews.
-9. Make sure all dates are valid (start before end)!
+7. ~~Only allow providers create offers in categories they are actually in~~
+    - ~~Only allow providers work in their categories etc. ~~
+8. Only allow portfolio entries for accounts who actually took part in that job, same for reviews - **no way of doing this at DB level**.
+9. ~~Make sure all dates are valid (start before end)!~~
 10. Only allow each account have one provider per category 
 11. Require an end date to move to finished (job)
 

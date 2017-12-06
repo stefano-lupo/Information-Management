@@ -17,6 +17,22 @@ begin
 end;
 /
 
+/* Checks to see if this is a leaf category (has no children) */
+/* This is used to ensure that providers aren't inserted into categories with children as parent categories are to be vague */
+create or replace function num_children_of_category(category_id in number) 
+    return number 
+    is 
+      num_children number(3);
+begin
+  dbms_output.put_line('category_id: ' || category_id);
+
+  select count(*) into num_children from category where category.parent=category_id;
+  return num_children;
+end;
+/
+
+
+
 
 /* Sample for calling 
 DECLARE 
