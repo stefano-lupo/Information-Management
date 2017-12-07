@@ -1,11 +1,3 @@
-
-/**
-  Go through all data types and add constraints
-  Eg Job status one of('in progress' etc)
-*/
-
-
-
 /* Fix line size so its readable */
 SET LINESIZE 32000
 

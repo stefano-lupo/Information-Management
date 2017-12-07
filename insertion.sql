@@ -276,9 +276,9 @@ insert into offer values (
 *********************************************************/
 insert into provider values (
   5,
-  'John''s Plumbing',
+  'Joes''s Plumbing',
   1,
-  '123 Johns Plumbing Address',
+  '123 Joes Plumbing Address',
   'Sutton',
   'Dublin',
   default

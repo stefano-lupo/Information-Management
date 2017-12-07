@@ -24,23 +24,8 @@ select portfolio_entry.title, portfolio_entry.description, category.name from po
 inner join job on job.id=portfolio_entry.fk_job and job.fk_provider=(select id from provider where name='John''s Music Lessons')
 inner join category on category.id=job.fk_category;
 
-/*
-select provider.fk_account, provider_category.fk_provider, provider_category.fk_category from provider_category
-inner join provider on provider.fk_account = 1
-inner join provider_category on provider_category.fk_provider = provider.id;
- */
-
 /* Checks if account already has a provider in a certain category */
 select count(*) from provider_category where provider_category.fk_provider in (select id from provider where provider.fk_account = 1) 
 and provider_category.fk_category = 4;
-
-
-/** INNER join providers and accounts -> only returns rows for entries who are BOTH PROVIDERS AND ACCOUNTS **/
-SELECT provider.name, provider.overall_score, account.first_name  FROM account 
-inner join provider on account.id=provider.fk_account;
-
-/** LEFT join providers and accounts -> returns ALL rows from accounts (includes customers!) and their provider info if applicable **/
-SELECT account.first_name, provider.name, provider.overall_score  FROM account 
-left join provider on account.id=provider.fk_account;
 
 
