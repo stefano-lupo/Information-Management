@@ -178,7 +178,7 @@ alter table review modify(helpfullness_rating default 0) add constraint review_r
 
 /* Update provider's score in given category on new review */ 
 /* This does not work due to mutability issues but the function does */
-/*
+
 create or replace trigger update_score_review
 after insert or update on review
 for each row

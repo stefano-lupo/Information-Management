@@ -52,11 +52,6 @@ end;
 /
 
 
-
-
-
-
-
 /* Updates a prioviders category score on getting a review */
 /* This function works correctly and can be called using code below */
 /* However I had some trouble getting this to run properly inside a trigger that run on an update */
